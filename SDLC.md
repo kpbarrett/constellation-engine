@@ -1,32 +1,24 @@
-# Constellation Prompt-Native SDLC
+# Constellation Engine SDLC
 
 ## 1. Purpose
 
-Constellation treats prompts, skills, policies, schemas, workflows, and evaluation artifacts as first-class source code. This SDLC defines how those artifacts are proposed, authored, reviewed, validated, released, and improved in GitHub.
+Constellation Engine treats prompts, skills, policies, schemas, workflows, evaluation artifacts, and governance records as first-class source code. This SDLC defines how those artifacts are proposed, authored, reviewed, validated, released, and improved over time.
 
-This lifecycle applies to:
-
-- mission and values documents
-- prompt and skill artifacts
-- policy and moderation artifacts
-- schemas and interface contracts
-- evaluations, test cases, benchmark suites, and example transcripts
-- contributor instructions, decision records, and incident reports
+The lifecycle must help the project ship useful work while protecting mission fit, transparency, contributor accountability, and public legibility.
 
 ## 2. Source Artifact Model
 
-Every change must identify which artifact class it modifies.
+Every change must identify the primary artifact class it modifies.
 
 ### 2.1 Charter Artifacts
 
 Examples:
 
 - `SPEC.md`
-- `VALUES.md`
-- global rules
-- governance rules
+- values statements
+- mission-defining rules
 
-Use when defining mission, hard constraints, or constitutional behavior.
+Use when defining what Constellation is for and what must remain true.
 
 ### 2.2 Contract Artifacts
 
@@ -34,10 +26,10 @@ Examples:
 
 - schemas
 - interface definitions
-- prompt input and output contracts
-- extension permission models
+- participant, content, reputation, or moderation contracts
+- extension boundaries
 
-Use when defining stable boundaries that other artifacts depend on.
+Use when defining stable interfaces that other artifacts depend on.
 
 ### 2.3 Operational Artifacts
 
@@ -46,57 +38,56 @@ Examples:
 - prompts
 - skills
 - workflows
+- ranking descriptions
 - moderation playbooks
-- ranking logic descriptions
 
-Use when defining executable behavior.
+Use when defining executable engine behavior.
 
 ### 2.4 Evidence Artifacts
 
 Examples:
 
 - eval suites
-- golden examples
-- transcript fixtures
-- benchmark summaries
+- fixtures
+- golden transcripts
+- benchmarks
 - incident analyses
 
-Use when proving whether an operational or policy change is good enough to ship.
+Use when proving whether a behavior or policy change should ship.
 
 ### 2.5 Governance Artifacts
 
 Examples:
 
 - decision records
-- proposals
-- release notes
 - contributor rules
-- appeals and incident procedures
+- review and release procedures
+- incident reports
 
 Use when defining how the project changes itself.
 
 ## 3. Lifecycle Principles
 
-- Review the artifact, not just the prose. Prompt wording, examples, and constraints are executable behavior.
-- Prefer small, composable changes over broad rewrites.
-- Require provenance. Humans and AIs must be attributable in issues, commits, and pull requests.
-- Require evidence proportional to risk.
-- Preserve public legibility. Major behavior changes must be explainable from repository artifacts.
-- Keep constitutional changes harder than local behavior tweaks.
-- Humans retain final accountability for legal, safety, and constitutional decisions.
+- Review the behavior encoded in artifacts, not just the prose quality.
+- Prefer narrow, composable changes over wide rewrites.
+- Require provenance for human and AI contribution.
+- Match evidence to risk.
+- Keep constitutional changes harder than local behavior changes.
+- Preserve historical integrity. Correct history by appending clarification unless a correction path explicitly authorizes revision.
+- Build the SDLC to improve itself through periodic review, not only during crises.
 
 ## 4. Change Classes
 
 Each pull request must declare exactly one primary change class.
 
-### Class C0: Editorial
+### C0: Editorial
 
 Scope:
 
 - grammar
 - formatting
 - broken links
-- non-semantic clarifications
+- non-semantic clarification
 
 Requirements:
 
@@ -104,47 +95,47 @@ Requirements:
 - no new eval evidence required
 - one reviewer
 
-### Class C1: Local Behavior
+### C1: Local Behavior
 
 Scope:
 
-- a prompt, skill, workflow, or contributor instruction with limited blast radius
+- a prompt, workflow, schema, doc, or automation change with limited blast radius
 - local examples or fixtures
-- repo-local automation
+- repository-local tooling
 
 Requirements:
 
 - linked issue required
-- updated examples or targeted eval evidence
-- one maintainer approval
+- targeted examples, fixtures, or validation notes
+- one maintainer or steward approval
 
-### Class C2: Shared Contract or Policy
+### C2: Shared Contract or Policy
 
 Scope:
 
-- schemas
-- shared prompt contracts
+- shared schemas
+- participant or content contracts
 - moderation policies
 - evaluation standards
-- contributor process changes that affect multiple artifact families
+- process changes that affect multiple artifact families
 
 Requirements:
 
 - linked issue required
-- rationale section in PR
-- backward-compatibility note or migration note
-- updated evals and affected documentation
-- two approvals, including the relevant artifact steward
+- rationale section in the PR
+- migration note or backward-compatibility note
+- updated evidence and affected documentation
+- two approvals, including the relevant steward
 
-### Class C3: Constitutional
+### C3: Constitutional
 
 Scope:
 
 - mission
 - values
-- global rules
 - governance model
 - contributor rights and restrictions
+- identity or transparency rules
 - anything that changes what the project is for
 
 Requirements:
@@ -152,21 +143,22 @@ Requirements:
 - governance issue required
 - explicit alternatives considered
 - explicit risk analysis
-- minimum public comment window of 72 hours before merge
+- minimum 72-hour comment window before merge
 - two human steward approvals, one of which must be a core maintainer
 
 ## 5. Lifecycle Stages
 
-## 5.1 Intake
+### 5.1 Intake
 
 All non-editorial work starts with a GitHub issue.
 
 Issue types:
 
-- artifact proposal
+- feature or artifact proposal
 - governance change
-- evaluation failure
-- incident or rollback follow-up
+- eval failure
+- internal review follow-up
+- incident follow-up
 
 Each issue must state:
 
@@ -176,9 +168,9 @@ Each issue must state:
 - likely change class
 - risks if unchanged
 
-## 5.2 Triage
+### 5.2 Triage
 
-Maintainers or artifact stewards triage issues within GitHub using labels.
+Maintainers or stewards triage issues using labels and ownership.
 
 Required triage outputs:
 
@@ -186,7 +178,7 @@ Required triage outputs:
 - change class
 - affected artifacts
 - required evidence level
-- whether AI-generated content is allowed, useful, or prohibited for this change
+- whether AI-generated content is allowed, useful, or prohibited
 
 Suggested labels:
 
@@ -201,251 +193,152 @@ Suggested labels:
 - `class:C3`
 - `needs-evals`
 - `needs-human-review`
-- `blocked`
+- `status:blocked`
 
-## 5.3 Design
+### 5.3 Design
 
-Before editing, the author must inspect existing artifact patterns and dependencies.
+Before editing, the author must inspect existing patterns and dependencies.
 
 Required design questions:
 
-- What behavior changes if this merges?
-- Which artifacts must stay consistent with this change?
-- How will the project know the new version is better?
+- What user-visible or operator-visible behavior changes if this merges?
+- Which artifacts must remain consistent with the change?
+- What evidence will show the new version is better or safer?
 - What failure modes or abuse paths could this introduce?
 - What human accountability is required?
 
-For C2 and C3 changes, these answers must be recorded in the PR description or linked issue.
+For C2 and C3 changes, record these answers in the PR description or linked issue.
 
-## 5.4 Authoring
+### 5.4 Authoring
 
 Authoring rules:
 
 - keep diffs narrow
 - preserve historical records unless the issue explicitly authorizes revision
-- update examples, schemas, and eval fixtures alongside behavior changes
+- update examples, fixtures, schemas, or docs alongside substantive behavior changes
 - separate normative changes from cleanup when possible
 
-Every substantive artifact change must include:
+Every substantive change should include:
 
 - the changed source artifact
-- supporting examples or fixtures when behavior is affected
+- supporting examples, fixtures, or release notes when behavior is affected
 - updated guidance where contributors would otherwise make the old assumption
 
-## 5.5 Evidence Generation
+### 5.5 Evidence Generation
 
-Prompt-native projects do not get to skip testing. The tests are different, but they are still tests.
+Constellation Engine does not skip testing because some artifacts are human-readable.
 
 Evidence may include:
 
-- golden example diffs
+- schema validation
 - transcript comparisons
+- before and after examples
 - benchmark or eval summaries
-- policy decision tables
-- schema validation results
 - manual review notes for non-automatable behavior
 - incident replay results
 
 Evidence expectations by class:
 
-- C0: none beyond reviewer judgment
-- C1: targeted examples or targeted evals
-- C2: regression coverage for all affected contracts or policies
-- C3: explicit comparison of old vs. new governance behavior and expected consequences
+- C0: reviewer judgment only
+- C1: targeted examples or validation notes
+- C2: regression coverage for affected shared behavior
+- C3: explicit comparison of old vs. new governance or constitutional behavior
 
-If evidence is manual, the PR must say:
+If evidence is manual, the PR must state:
 
 - who performed it
-- what was reviewed
+- what they reviewed
 - what passed or failed
 - what remains uncertain
 
-## 5.6 Pull Request Review
+### 5.6 Review
 
-All changes merge through pull requests. Direct pushes to the default branch are not allowed.
-
-Branch protection expectations in GitHub:
-
-- require pull requests
-- require status checks
-- require conversation resolution
-- block force-pushes to the default branch
-
-Review dimensions:
+Reviewers must assess:
 
 - mission fit
-- artifact correctness
-- safety and abuse resistance
-- internal consistency
-- clarity for future contributors
-- eval adequacy
-- provenance completeness
+- clarity
+- behavioral impact
+- evidence sufficiency
+- consistency with `SPEC.md`
+- whether declared change class matches the real blast radius
 
-AI review is allowed for analysis and drafting. Human review is mandatory for:
+Blocking review feedback should be explicit.
 
-- C2 and C3 changes
-- policy changes
-- moderation logic
-- incident closure
-- release approval
+### 5.7 Release
 
-## 5.7 Merge and Release
+Releases mark stable artifact sets for downstream engine work.
 
-Merge policy:
+Each release should include:
 
-- squash merge by default for artifact work
-- keep commit messages descriptive and issue-linked
-- merge only after required evidence and approvals are present
+- summary of behavior and process changes
+- contract or migration notes
+- known risks
+- incident follow-ups still open
 
-Release policy:
+Prefer small, frequent releases over infrequent bundles that obscure provenance.
 
-- tag releases when a coherent set of artifact changes is ready for downstream use
-- publish release notes summarizing changed behaviors, affected artifacts, known risks, and required follow-up
-- call out any migration expectations for dependent repos or agent runtimes
+### 5.8 Incident and Rollback
 
-## 5.8 Operate and Observe
+If a merged artifact creates harm, confusion, or a governance breach:
 
-After merge, maintainers watch for:
+1. contain the issue
+2. open or link an incident issue
+3. rollback or patch with human approval appropriate to the risk
+4. record the cause, impact, and follow-up actions
 
-- eval regressions
-- contributor confusion
-- policy ambiguity
-- contradictory artifacts
-- abuse opportunities created by the change
+Incident rollback may bypass normal timing, but it must be documented afterward.
 
-If a prompt, policy, or workflow behaves worse than intended, open an `eval failure` or `incident` issue immediately.
+## 6. CI/CD Baseline
 
-## 5.9 Incident, Rollback, and Correction
+The initial CI/CD baseline for this repository is:
 
-Rollback triggers:
+- `make test` as the required local and CI validation entrypoint
+- GitHub Actions validation on pushes and pull requests
+- tagged release publication through GitHub Actions
+- scheduled internal SDLC review issue generation
 
-- safety regression
-- constitutional conflict
-- broken contract
-- materially misleading contributor guidance
-- abuse-enabling prompt behavior
-
-Rollback rules:
-
-- prefer revert PRs over silent force-push correction
-- document what failed and why
-- open a follow-up issue before or immediately after rollback
-- add or strengthen eval coverage before reattempting the change
-
-## 6. Roles in the Lifecycle
-
-Detailed authority lives in `GOVERNANCE.md`. Operationally, the lifecycle assumes these roles exist:
-
-- contributor: authors or updates artifacts
-- reviewer: evaluates correctness and clarity
-- artifact steward: owns coherence for an artifact family
-- eval owner: defines or approves evaluation adequacy
-- release steward: packages and announces releases
-- incident lead: coordinates urgent rollback or correction
-
-One person may hold multiple roles for low-risk changes, but no one should unilaterally approve their own C2 or C3 PR.
+As runnable engine components arrive, extend CI to cover them through `make test` rather than creating fragmented entrypoints.
 
 ## 7. Human and AI Contribution Rules
 
-### 7.1 Human Contributors
-
-Humans may propose, author, review, approve, merge, and govern according to their repository role.
-
-Humans are accountable for:
-
-- constitutional interpretation
-- legal and safety judgment
-- moderation policy approval
-- release approval
-- incident closure
-
-### 7.2 AI Contributors
-
-AIs may:
-
-- draft artifacts
-- propose diffs
-- summarize issues
-- run or assist with eval analysis
-- review for consistency, coverage, and risk
-
-AIs must not:
-
-- hide their participation
-- invent test evidence
-- silently rewrite historical records
-- serve as the only approval for C2 or C3 work
-
-Every PR with AI involvement must disclose:
-
-- model or agent identity when known
-- major tasks performed by the AI
-- which outputs were accepted without major rewrite
-- human accountable reviewer
+- Humans remain accountable for acceptance and merge decisions.
+- AI assistance must be disclosed in pull requests when used for drafting, analysis, review, or evaluation.
+- AI systems may propose, summarize, and help validate, but may not be the sole approving authority for C2 or C3 changes.
+- Unverifiable AI-authored evidence is not sufficient for merge.
+- Sensitive or safety-relevant policy changes require human review even when AI generated the draft.
 
 ## 8. Definition of Done
 
-A change is done only when all of the following are true:
+A change is done when:
 
-- the issue is linked and still accurately describes the change
-- the artifact class and change class are declared
-- all impacted source artifacts are updated
-- required evidence is attached
-- required approvals are present
+- the issue and change class are clear
+- required artifacts are updated
+- evidence is attached and proportionate to risk
 - `make test` passes
-- any residual risk is documented
+- the review path is complete
+- downstream or release implications are documented
 
-## 9. Repository Conventions
+## 9. Continuous Improvement Review
 
-When this process is applied to a prompt-native repository, use these structural defaults unless that repository defines stricter ones:
+The SDLC itself must be reviewed on a regular cadence.
 
-- `prompts/` for prompt artifacts
-- `skills/` for reusable workflows or operator knowledge
-- `policy/` for governance and moderation rules
-- `schemas/` for contracts
-- `evals/` for evidence artifacts
-- `decisions/` for ADRs and governance decisions
-- `.github/` for templates and automation
+Cadence:
 
-## 10. Required GitHub Settings
+- open an internal review issue every 30 days
+- additionally trigger review after any critical incident or repeated process failure
 
-Repository administrators should configure:
+Each internal review should answer:
 
-- protected default branch
-- required PR reviews
-- required status check for the repository validation workflow
-- issue templates enabled
-- pull request template enabled
-- release tagging enabled
+- Is the current SDLC helping the project meet the goals in `SPEC.md`?
+- Which steps create clarity and which create drag?
+- Where did contributor confusion, review delay, or weak evidence appear?
+- Which automation or templates should be added, tightened, or removed?
+- Are release, rollback, and incident procedures still proportionate to the project stage?
 
-## 11. Minimum Operating Cadence
+Outputs:
 
-- triage new issues within 2 business days
-- review C1 pull requests within 3 business days
-- review C2 and C3 pull requests within 5 business days
-- publish release notes for tagged releases on the day of release
-- open incident issues within 24 hours of a confirmed regression
+- a short written assessment in the review issue
+- follow-up issues for concrete process changes
+- reclassification of any policy now too weak or too heavy for the actual project risk
 
-## 12. Internal Review and Continuous Improvement
-
-The SDLC itself is a living artifact. The project must periodically inspect whether the process still serves the mission instead of assuming the initial design will remain adequate.
-
-Review cadence:
-
-- perform an internal SDLC review at least once per quarter
-- perform an ad hoc review after any major incident, governance dispute, or contributor-experience failure
-
-Review inputs:
-
-- issue backlog shape and age
-- PR cycle time
-- validation failures
-- incident count and severity
-- contributor friction points
-- release quality and downstream confusion
-
-Review outcomes:
-
-- update the SDLC or governance docs when the current process is creating avoidable drag or blind spots
-- adjust template questions, evidence thresholds, or review roles when the work has outgrown the original baseline
-- record the decision and rationale in a follow-up issue or decision record when the change has lasting impact
+This section is normative. Process drift should be corrected through ordinary governance rather than ignored.

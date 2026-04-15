@@ -3,16 +3,16 @@
 ## 1. Before You Start
 
 - Read `SPEC.md`, `SDLC.md`, and `GOVERNANCE.md`.
-- Read `GITHUB-WORKFLOW.md` before opening a pull request.
-- Search for existing patterns before proposing a new structure or term.
+- Search for existing terms, patterns, and related artifacts before inventing a new structure.
 - Open or claim a GitHub issue unless the change is clearly C0 editorial.
+- Keep the change as small as possible while still solving the actual problem.
 
 ## 2. Contributor Workflow
 
-1. Open an issue using the closest template.
-2. Classify the change as `C0`, `C1`, `C2`, or `C3`.
-3. State which artifact class is being changed.
-4. Create a branch from the default branch.
+1. Open or claim an issue.
+2. Declare the change class: `C0`, `C1`, `C2`, or `C3`.
+3. State the primary artifact class being changed.
+4. Create a short-lived branch from `main`.
 5. Make the smallest coherent change that solves the issue.
 6. Add evidence proportional to risk.
 7. Run `make test`.
@@ -24,24 +24,25 @@ Suggested branch prefixes:
 
 - `editorial/`
 - `artifact/`
+- `contract/`
 - `policy/`
 - `governance/`
 - `eval/`
 - `incident/`
 
-Each PR should change one primary concern. Split the work when:
+Each PR should address one primary concern. Split the work when:
 
-- a policy change and a prompt rewrite can be reviewed independently
-- a schema change and its migrations would obscure each other
-- a constitutional debate would block operational improvements
+- policy and implementation can be reviewed independently
+- a schema change and migration notes would obscure each other
+- a constitutional debate would block local engine progress
 
 ## 4. Evidence Expectations
 
 Use evidence that matches the artifact:
 
-- prompt or skill change: before and after examples, transcript fixtures, or targeted evals
-- policy change: decision tables, edge cases, and enforcement examples
+- prompt or workflow change: before and after examples, transcript fixtures, or targeted evals
 - schema change: contract examples and migration notes
+- policy change: decision tables, edge cases, and enforcement examples
 - governance change: explicit explanation of authority shifts and failure modes
 
 When evidence is manual, write down:
@@ -57,14 +58,14 @@ All contributors must preserve attribution.
 
 If AI assisted:
 
-- disclose the model or agent if known
+- disclose the model or agent when known
 - describe what it produced
-- identify the human who verified and accepted the content
+- identify the human accountable reviewer
 
 If multiple humans contributed:
 
 - identify the final accountable author in the PR
-- credit subject matter reviewers where relevant
+- credit subject matter reviewers when relevant
 
 ## 6. Review Etiquette
 
@@ -76,17 +77,11 @@ If multiple humans contributed:
 
 ## 7. Historical Integrity
 
-Do not revise status logs, decision records, or incident history unless the issue explicitly calls for a correction. If history was wrong, correct it by appending clarification, not by silently rewriting the past.
+Do not silently rewrite project history, incident records, decision logs, or review outcomes. If history was wrong, correct it through an explicit follow-up that preserves the original trail.
 
-## 8. What Not to Submit
+## 8. Community Standards
 
-Do not submit changes that:
-
-- optimize engagement while degrading meaning or truth-seeking
-- obscure AI provenance
-- weaken contributor accountability
-- bypass review for policy or constitutional changes
-- add process complexity without reducing ambiguity or risk
+By participating, you agree to follow `CODE_OF_CONDUCT.md`. Report unacceptable behavior or security-sensitive concerns through the channels in `CODE_OF_CONDUCT.md` and `SECURITY.md` rather than in public issues when disclosure would create harm.
 
 ## 9. Validation
 

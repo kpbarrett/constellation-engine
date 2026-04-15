@@ -1,0 +1,69 @@
+name: Internal Review
+
+on:
+  schedule:
+    - cron: "0 14 1 * *"
+  workflow_dispatch:
+
+jobs:
+  open-review-issue:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Create scheduled internal review issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const today = new Date().toISOString().slice(0, 10);
+            const title = `[internal-review] SDLC review ${today}`;
+            const body = [
+              "## Review period",
+              "",
+              `Scheduled review opened on ${today}.`,
+              "",
+              "## What is working",
+              "",
+              "- ",
+              "",
+              "## What is creating drag",
+              "",
+              "- ",
+              "",
+              "## Evidence",
+              "",
+              "- ",
+              "",
+              "## Recommended changes",
+              "",
+              "- ",
+              "",
+              "## Follow-up issues",
+              "",
+              "- ",
+            ].join("\n");
+
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner,
+              repo,
+              state: "open",
+              labels: "artifact:governance",
+              per_page: 100,
+            });
+
+            const alreadyOpen = issues.some((issue) => issue.title === title);
+            if (alreadyOpen) {
+              core.info(`Issue already open: ${title}`);
+              return;
+            }
+
+            await github.rest.issues.create({
+              owner,
+              repo,
+              title,
+              body,
+              labels: ["artifact:governance", "needs-triage"],
+            });

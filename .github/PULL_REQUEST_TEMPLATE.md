@@ -35,4 +35,4 @@ Describe any safety, governance, compatibility, or contributor-experience risks 
 
 ## Follow-up
 
-List any follow-up issue, migration, or release-note work needed after merge.
+List any follow-up issue, migration, release-note, or incident work needed after merge.

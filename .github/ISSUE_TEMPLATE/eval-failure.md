@@ -1,14 +1,18 @@
 ---
-name: Evaluation failure
-about: Report a failed or misleading evaluation result
-title: "[eval] "
-labels: ["needs-triage"]
+name: Eval failure
+about: Report a regression, weak evaluation, or behavior that passed review but failed in use
+title: "[eval-failure] "
+labels: ["needs-triage", "needs-evals"]
 assignees: []
 ---
 
-## Problem
+## What failed
 
-What failed or produced a misleading result?
+Describe the behavior, artifact, or expectation that failed.
+
+## Trigger or scenario
+
+What input, transcript, review path, or release exposed the problem?
 
 ## Expected behavior
 
@@ -16,12 +20,19 @@ What should have happened instead?
 
 ## Affected artifacts
 
-List the prompts, skills, policies, schemas, or tests involved.
+List the likely prompts, skills, policies, schemas, or docs involved.
+
+## Severity
+
+- [ ] low
+- [ ] medium
+- [ ] high
+- [ ] critical
 
 ## Evidence
 
-Include links, sample outputs, or reproduction steps.
+Provide transcript excerpts, examples, links, or notes that reproduce the problem.
 
-## Impact
+## Containment
 
-What user or project outcome is at risk because of this failure?
+State whether rollback, warning labels, or temporary restrictions are needed.

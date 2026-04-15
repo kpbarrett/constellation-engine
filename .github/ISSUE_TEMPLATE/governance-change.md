@@ -1,38 +1,31 @@
 ---
 name: Governance change
-about: Propose a change to process, review, or decision rights
+about: Propose a change to authority, approvals, rules, or constitutional process
 title: "[governance] "
-labels: ["needs-triage"]
+labels: ["needs-triage", "class:C3"]
 assignees: []
 ---
 
-## Problem
+## Current rule
 
-What process or decision-right gap needs to change?
+What rule, approval path, or authority boundary exists today?
 
-## Desired outcome
+## Proposed rule
 
-What should the repo be able to do after the change?
+What should change?
 
-## Governance impact
+## Why this change is needed
 
-- [ ] review rules
-- [ ] branch protection
-- [ ] release policy
-- [ ] contributor rights
-- [ ] escalation path
+Explain the operational problem, governance gap, or risk.
 
-## Proposed change class
+## Alternatives considered
 
-- [ ] C0 editorial
-- [ ] C1 local behavior
-- [ ] C2 shared contract or policy
-- [ ] C3 constitutional
+List the other options and why they are not preferred.
 
-## Evidence or examples
+## Risks introduced
 
-What concrete examples show the current process is insufficient?
+Describe failure modes, abuse opportunities, or ambiguity this could create.
 
-## Risks if unchanged
+## Required human decision makers
 
-What becomes harder or less accountable if we do nothing?
+Identify which steward or maintainer roles should weigh in.

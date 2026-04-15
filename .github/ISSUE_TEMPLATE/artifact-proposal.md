@@ -1,6 +1,6 @@
 ---
 name: Artifact proposal
-about: Propose a new or changed prompt-native artifact
+about: Propose a new or changed engine artifact
 title: "[artifact] "
 labels: ["needs-triage"]
 assignees: []
