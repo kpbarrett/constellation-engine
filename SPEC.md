@@ -94,7 +94,7 @@ The following values are normative and binding for the engine:
 - The system must be designed for lawful use.
 - Features that materially depend on illegal behavior, fraud, coercion, abuse, or rights violations are out of scope.
 
-### 6.2 Good-Skewing Participation
+### 6.2 Participation That Skews Lawful Good
 - The network should structurally favor constructive, prosocial, reality-oriented behavior.
 - "Edgy neutrality" is not the goal; the engine should explicitly bias toward human benefit.
 
