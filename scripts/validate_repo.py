@@ -11,6 +11,8 @@ ROOT = Path(__file__).resolve().parent.parent
 
 REQUIRED_FILES = {
     "README.md": [],
+    "LICENSE": [],
+    "CODEOWNERS": [],
     "SPEC.md": [
         "## 1. Project Identity",
         "## 2. Mission",

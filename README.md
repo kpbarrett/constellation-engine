@@ -20,6 +20,8 @@ The normative product intent lives in [SPEC.md](SPEC.md). This repository adds t
 - `GITHUB-WORKFLOW.md`: GitHub issue, branch, PR, review, release, and rollback flow
 - `CODE_OF_CONDUCT.md`: community participation standards
 - `SECURITY.md`: vulnerability reporting and security response expectations
+- `CODEOWNERS`: repository review ownership
+- `LICENSE`: Apache 2.0 source license
 
 ## Local validation
 
